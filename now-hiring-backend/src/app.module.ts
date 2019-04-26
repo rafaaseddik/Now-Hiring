@@ -6,11 +6,11 @@ import {environment} from '../environment/environment';
 import { CoreModule } from './modules/core/core.module';
 import { AuthModule } from './modules/core/auth/auth.module';
 import { UserProfileModule } from './modules/user-profile/user-profile.module';
-import { JobModule } from './modules/jobs/jobModule';
 import { TestModule } from './modules/test/testModule';
 import { SubmissionModule } from './modules/submission/submission.module';
 import { ResumeModule } from './modules/resume/resume.module';
 import { DatabaseModule } from './modules/database/database.module';
+import {JobOfferModule} from "./modules/job-offers/job-offer.module";
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { DatabaseModule } from './modules/database/database.module';
     CoreModule,
     AuthModule,
     UserProfileModule,
-    JobModule,
+    JobOfferModule,
     TestModule,
     SubmissionModule,
     ResumeModule,

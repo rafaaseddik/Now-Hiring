@@ -1,33 +1,27 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsEmail } from 'class-validator';
-import {Contact} from "../../../user-profile/models/Contact.model";
-import {Address} from "../../../user-profile/models/Address.model";
-export class CompanySignupDto{
-    @IsEmail()
+import {Contact} from "../models/Contact.model";
+import {Address} from "../models/Address.model";
+export class CandidateUpdateDto{
+
     @ApiModelProperty()
-    email: string;
+    _id: string;
     @ApiModelProperty()
     password: string;
     @ApiModelProperty()
-    companyName: string;
+    fname: string;
     @ApiModelProperty()
-    companyUrl: string;
+    lname: string;
+    @ApiModelProperty({
+        example:"yyyy-mm-dd"
+    })
+    birthdate: Date;
     @ApiModelProperty()
-    phoneNumbers: string;
+    phoneNumber: string;
     @ApiModelProperty()
-    employeesNumber: string;
-    @ApiModelProperty()
-    description: string;
-    @ApiModelProperty()
-    speciality: string;
-    @ApiModelProperty()
-    foundationYear: number;
+    imageUrl: string;
     @ApiModelProperty()
     about: string;
-    @ApiModelProperty()
-    logoUrl: string;
-    @ApiModelProperty()
-    ceoName: string;
     @ApiModelProperty({
         example:{
             facebookLink: "",
@@ -49,4 +43,5 @@ export class CompanySignupDto{
         }
     })
     address:Address;
+
 }

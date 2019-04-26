@@ -1,5 +1,6 @@
 import {User} from "./User.model";
 import {Contact} from "./Contact.model";
+import {Address} from "./Address.model";
 
 
 export interface Company extends User{
@@ -13,5 +14,6 @@ export interface Company extends User{
     about: string;
     logoUrl: string;
     ceoName: string;
-    contact:Contact
+    contact:Contact;
+    address:Address;
 }

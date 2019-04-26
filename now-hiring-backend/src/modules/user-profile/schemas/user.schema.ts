@@ -35,6 +35,7 @@ export const CompanySchema = new mongoose.Schema({
     logoUrl: String,
     ceoName: String,
     contact:ContactSchema,
+    address:AddressSchema,
 });
 
 export enum USER_TYPE {

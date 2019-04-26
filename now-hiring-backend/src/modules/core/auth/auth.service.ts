@@ -4,11 +4,12 @@ import {JwtService} from '@nestjs/jwt'
 import {Candidate} from "../../user-profile/models/Candidate.model";
 import {CandidateSignupDto} from "./dto/candidate.signup.dto";
 import {CryptoService} from "../crypto/crypto.service";
-import {CandidateSigninDto} from "./dto/candidate.signin.model";
+
 import {User} from "../../user-profile/models/User.model";
 import {Company} from "../../user-profile/models/Company.model";
 import {CompanySignupDto} from "./dto/company.signup.dto";
-import {CompanySigninDto} from "./dto/company.signin.model";
+import {UserSigninDto} from "./dto/user.signin.dto";
+
 
 @Injectable()
 export class AuthService {
@@ -22,7 +23,7 @@ export class AuthService {
         private readonly jwtService: JwtService
     ) {
     }
-    public async candidateSignin(candidateSigninDto:CandidateSigninDto):Promise<Candidate>{
+    public async candidateSignin(candidateSigninDto:UserSigninDto):Promise<Candidate>{
 
         return await this.candidateModel.findOne({
             email:candidateSigninDto.email,
@@ -36,7 +37,7 @@ export class AuthService {
         return await newCandidate.save();
     }
 
-    public async companySignin(companySigninDto:CompanySigninDto):Promise<Company>{
+    public async companySignin(companySigninDto:UserSigninDto):Promise<Company>{
 
         return await this.companyModel.findOne({
             email:companySigninDto.email,

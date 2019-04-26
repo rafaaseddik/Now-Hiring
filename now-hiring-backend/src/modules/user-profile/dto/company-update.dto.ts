@@ -1,13 +1,11 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsEmail } from 'class-validator';
-import {Contact} from "../../../user-profile/models/Contact.model";
-import {Address} from "../../../user-profile/models/Address.model";
-export class CompanySignupDto{
-    @IsEmail()
+import {Contact} from "../models/Contact.model";
+import {Address} from "../models/Address.model";
+export class CompanyUpdateDto{
+
     @ApiModelProperty()
-    email: string;
-    @ApiModelProperty()
-    password: string;
+    _id: string;
     @ApiModelProperty()
     companyName: string;
     @ApiModelProperty()
@@ -49,4 +47,6 @@ export class CompanySignupDto{
         }
     })
     address:Address;
+
+
 }
