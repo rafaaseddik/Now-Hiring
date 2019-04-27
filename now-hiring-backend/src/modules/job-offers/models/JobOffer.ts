@@ -1,4 +1,5 @@
 import { Document } from 'mongoose';
+import {Company} from "../../user-profile/models/Company.model";
 
 export interface JobOffer extends Document{
 

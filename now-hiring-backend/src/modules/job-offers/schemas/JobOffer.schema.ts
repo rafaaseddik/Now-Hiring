@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import {Schema} from "mongoose";
 
-export const JobOfferSchema = new mongoose.Schema({
+const JobOfferSchema = new mongoose.Schema({
     title: String,
     description: String,
     creationDate: Date,
@@ -12,10 +12,14 @@ export const JobOfferSchema = new mongoose.Schema({
     skills: [
         {
             name: String,
-            level: String
+            level: Number
         }
     ],
 
     companyId: {type: Schema.Types.ObjectId, ref: "Company"}
 });
-
+JobOfferSchema.index({
+    title:'text',
+    description:'text',
+});
+export {JobOfferSchema}

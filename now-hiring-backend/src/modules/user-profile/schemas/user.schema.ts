@@ -13,14 +13,14 @@ const CandidateSchema = new mongoose.Schema({
     phoneNumber: String,
     imageUrl: String,
     about: String,
-    contact:ContactSchema,
-    address:AddressSchema,
-    resume:{type:Schema.Types.ObjectId,ref:"Resume"}
+    contact: ContactSchema,
+    address: AddressSchema,
+    resume: {type: Schema.Types.ObjectId, ref: "Resume"}
 });
+CandidateSchema.index({fname: 'text', lname: 'text', about: 'text'});
 
-export {CandidateSchema};
 
-export const CompanySchema = new mongoose.Schema({
+const CompanySchema = new mongoose.Schema({
     email: String,
     password: String,
     isVerified: Boolean,
@@ -34,10 +34,12 @@ export const CompanySchema = new mongoose.Schema({
     about: String,
     logoUrl: String,
     ceoName: String,
-    contact:ContactSchema,
-    address:AddressSchema,
+    contact: ContactSchema,
+    address: AddressSchema,
 });
+CompanySchema.index({companyName:'text',description:'text',about:'text',ceoName:'text'});
 
+export {CandidateSchema ,CompanySchema};
 export enum USER_TYPE {
     DEFAULT = 'DEFAULT',
     CANDIDATE = 'CANDIDATE',

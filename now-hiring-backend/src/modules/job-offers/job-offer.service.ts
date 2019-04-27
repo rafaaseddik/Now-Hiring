@@ -3,6 +3,7 @@ import {Model} from 'mongoose';
 import {JwtService} from '@nestjs/jwt'
 import {JobOffer} from "./models/JobOffer";
 import {JobOfferDto} from "./dto/job-offer.dto";
+import {AdvancedJobOfferSearchDto} from "./dto/advanced-job-offer-search.dto";
 
 
 @Injectable()
@@ -11,26 +12,57 @@ export class JobOfferService {
     constructor(
         @Inject('JOB_OFFER_MODEL')
         private readonly jobOfferModel: Model<JobOffer>
-
     ) {
     }
-    public async createJobOffer(jobOfferDto:JobOfferDto):Promise<JobOffer>{
+
+    public async createJobOffer(jobOfferDto: JobOfferDto): Promise<JobOffer> {
 
         var newJobOffer = new this.jobOfferModel(jobOfferDto);
         return await newJobOffer.save();
     }
-    public async getAll(limit:number,page:number):Promise<Array<JobOffer>>{
-        return await this.jobOfferModel.find().skip(limit*(page-1)).limit(Number(limit));
-    }
-    public async updateJobOffer(jobOfferDto:JobOfferDto):Promise<JobOffer>{
-        return await this.jobOfferModel.findByIdAndUpdate(jobOfferDto._id,jobOfferDto,{new:true});
-    }
-    public async deleteJobOffer(jobOfferId:string):Promise<JobOffer>{
-        return await this.jobOfferModel.findOneAndDelete({_id:jobOfferId});
+
+    public async getAll(limit: number, page: number): Promise<Array<JobOffer>> {
+        return await this.jobOfferModel.find().skip(limit * (page - 1)).limit(Number(limit));
     }
 
+    public async search(advancedJobOfferSearch: AdvancedJobOfferSearchDto): Promise<Array<JobOffer>> {
+        return await this.jobOfferModel.find({
+            $and: [
+                {$text: {$search: advancedJobOfferSearch.query}},
+                {timePlan: {$in: advancedJobOfferSearch.timePlans}},
+                {minSalary: {$gte: Math.max(0, advancedJobOfferSearch.minSalary)}},
+                {maxSalary: {$lte: Math.min(Infinity, advancedJobOfferSearch.maxSalary)}},
+                advancedJobOfferSearch.skill ? {
+                    skills: {
+                        $elemMatch: {
+                            name: advancedJobOfferSearch.skill.name,
+                            level: {$lte: advancedJobOfferSearch.skill.minimumLevel}
+                        }
+                    }
+                } : {
+                    skills: {
+                        $elemMatch: {
+                            level: {$gte: 0}
+                        }
+                    }
+                }
 
 
+            ]
+        });
+    }
+
+    public async getByCompanyId(companyId: string): Promise<Array<JobOffer>> {
+        return await this.jobOfferModel.find({companyId: companyId});
+    }
+
+    public async updateJobOffer(jobOfferDto: JobOfferDto): Promise<JobOffer> {
+        return await this.jobOfferModel.findByIdAndUpdate(jobOfferDto._id, jobOfferDto, {new: true});
+    }
+
+    public async deleteJobOffer(jobOfferId: string): Promise<JobOffer> {
+        return await this.jobOfferModel.findOneAndDelete({_id: jobOfferId});
+    }
 
 
 }
