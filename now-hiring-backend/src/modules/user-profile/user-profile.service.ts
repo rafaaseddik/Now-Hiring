@@ -20,11 +20,17 @@ export class UserProfileService {
     ) {
     }
 
+    public async getCompanyById(id:string):Promise<Company>{
+        return await this.companyModel.findById(id);
+    }
     public async getAllCompanies(limit:number,page:number):Promise<Array<Company>>{
         return await this.companyModel.find().skip(limit*(page-1)).limit(Number(limit));
     }
     public async updateCompany(companyUpdateDto:CompanyUpdateDto):Promise<Company>{
         return await this.companyModel.findByIdAndUpdate(companyUpdateDto._id,companyUpdateDto,{new:true});
+    }
+    public async getCandidateById(id:string):Promise<Candidate>{
+        return await this.candidateModel.findById(id);
     }
     public async getAllCandidates(limit:number,page:number):Promise<Array<Candidate>>{
         return await this.candidateModel.find().skip(limit*(page-1)).limit(Number(limit));

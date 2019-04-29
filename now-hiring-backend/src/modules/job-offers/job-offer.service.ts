@@ -18,11 +18,11 @@ export class JobOfferService {
     public async createJobOffer(jobOfferDto: JobOfferDto): Promise<JobOffer> {
 
         var newJobOffer = new this.jobOfferModel(jobOfferDto);
-        return await newJobOffer.save();
+        return (await newJobOffer.save()).populate('company');
     }
 
     public async getAll(limit: number, page: number): Promise<Array<JobOffer>> {
-        return await this.jobOfferModel.find().skip(limit * (page - 1)).limit(Number(limit));
+        return await this.jobOfferModel.find().skip(limit * (page - 1)).limit(Number(limit)).populate('company  ');
     }
 
     public async search(advancedJobOfferSearch: AdvancedJobOfferSearchDto): Promise<Array<JobOffer>> {
@@ -49,15 +49,19 @@ export class JobOfferService {
 
 
             ]
-        });
+        }).populate('company');
     }
 
     public async getByCompanyId(companyId: string): Promise<Array<JobOffer>> {
-        return await this.jobOfferModel.find({companyId: companyId});
+        return await this.jobOfferModel.find({company: companyId}).populate('company');
+    }
+
+    public async getById(jobId: string): Promise<JobOffer> {
+        return await this.jobOfferModel.findById(jobId).populate('company');
     }
 
     public async updateJobOffer(jobOfferDto: JobOfferDto): Promise<JobOffer> {
-        return await this.jobOfferModel.findByIdAndUpdate(jobOfferDto._id, jobOfferDto, {new: true});
+        return await this.jobOfferModel.findByIdAndUpdate(jobOfferDto._id, jobOfferDto, {new: true}).populate('company');
     }
 
     public async deleteJobOffer(jobOfferId: string): Promise<JobOffer> {

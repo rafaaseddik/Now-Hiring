@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { UploadFilesModule } from './upload-files/upload-files.module';
 
-@Module({})
+@Module({
+  imports: [UploadFilesModule]
+})
 export class CoreModule {}

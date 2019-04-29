@@ -1,4 +1,4 @@
-{
+  {
   "name": "now-hiring-backend",
   "version": "0.0.1",
   "description": "",
@@ -31,6 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.2.1",
     "mongoose": "^5.4.20",
+    "python-shell": "^1.0.7",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",

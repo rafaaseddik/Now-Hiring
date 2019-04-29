@@ -11,6 +11,9 @@ import { SubmissionModule } from './modules/submission/submission.module';
 import { ResumeModule } from './modules/resume/resume.module';
 import { DatabaseModule } from './modules/database/database.module';
 import {JobOfferModule} from "./modules/job-offers/job-offer.module";
+import { CodeRunnerModule } from './modules/code-runner/code-runner.module';
+
+
 
 @Module({
   imports: [
@@ -23,6 +26,7 @@ import {JobOfferModule} from "./modules/job-offers/job-offer.module";
     SubmissionModule,
     ResumeModule,
     DatabaseModule,
+    CodeRunnerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

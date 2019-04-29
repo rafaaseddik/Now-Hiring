@@ -7,6 +7,11 @@ import {Candidate} from "./models/Candidate.model";
 import {ListAllEntitiesDto} from "../core/models/listAllEntities.dto";
 import {CompanyUpdateDto} from "./dto/company-update.dto";
 import {CandidateUpdateDto} from "./dto/candidate-update.dto";
+import {AuthResponseObject} from "../core/auth/dto/auth-response.model";
+import {USER_TYPE} from "./schemas/user.schema";
+import {ErrorResponseObject} from "../core/models/error.response.model";
+import {UserResponseObject} from "./dto/user-response.model";
+import {ResponseObject} from "../core/models/response.model";
 
 
 @ApiUseTags('UserProfile')
@@ -16,6 +21,15 @@ export class UserProfileController {
     constructor(private readonly userProfileService:UserProfileService){
     }
 
+    @Get('company/:id')
+    public async getCompanyById(@Param('id') id: string):Promise<ResponseObject>{
+        let result = await this.userProfileService.getCompanyById(id);
+        if(result){
+            return new UserResponseObject(200,result,USER_TYPE.COMPANY)
+        }else{
+            return new ErrorResponseObject(403,"Company with such ID not found");
+        }
+    }
     @Get('company')
     public async getAllCompanies(@Query() query:ListAllEntitiesDto):Promise<Array<Company>>{
         return await this.userProfileService.getAllCompanies(query.limit,query.page);
@@ -24,7 +38,16 @@ export class UserProfileController {
     public async updateCompany(@Body()companyUpdateDto:CompanyUpdateDto):Promise<Company>{
         return await this.userProfileService.updateCompany(companyUpdateDto);
     }
+    @Get('candidate/:id')
+    public async getCandidateById(@Param('id') id: string):Promise<ResponseObject>{
 
+        let result = await this.userProfileService.getCandidateById(id);
+        if(result){
+            return new UserResponseObject(200,result,USER_TYPE.CANDIDATE)
+        }else{
+            return new ErrorResponseObject(403,"Candidate with such ID not found");
+        }
+    }
     @Get('candidate')
     public async getAllCandidates(@Query() query:ListAllEntitiesDto):Promise<Array<Candidate>>{
         return await this.userProfileService.getAllCandidates(query.limit,query.page);

@@ -27,9 +27,15 @@ export class JobOfferController {
     public async search(@Body() query: AdvancedJobOfferSearchDto): Promise<Array<JobOffer>> {
         return await this.jobOfferService.search(query);
     }
-    @Get(':companyId')
+    @Get('company/:companyId')
     public async getByCompanyId(@Param('companyId') companyId: string){
         return await this.jobOfferService.getByCompanyId(companyId);
+    }
+
+    @Get(':jobId')
+    public async getById(@Param('jobId') jobId: string){
+        console.log(jobId);
+        return await this.jobOfferService.getById(jobId);
     }
 
     @Put()

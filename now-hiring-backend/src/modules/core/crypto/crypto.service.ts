@@ -1,6 +1,6 @@
 import {Injectable} from '@nestjs/common';
 import * as md5 from 'md5';
-
+import * as crypto from 'crypto'
 @Injectable()
 export class CryptoService {
     /**
@@ -20,5 +20,13 @@ export class CryptoService {
      */
     public hash(plain: string): string {
         return md5(plain);
+    }
+    /**
+     * Generate id
+     * @param {string} plain
+     * @returns {string}
+     */
+    public generateId(length:number): string {
+        return crypto.randomBytes(length).toString('hex');
     }
 }

@@ -31,5 +31,5 @@ export class JobOfferDto {
         level:number
     }> = []
     @ApiModelProperty()
-    companyId:string
+    company:string
 }

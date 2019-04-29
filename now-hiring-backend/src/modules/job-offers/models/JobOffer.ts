@@ -15,5 +15,5 @@ export interface JobOffer extends Document{
         name:string,
         level:number
     }>
-    companyId:string
+    company:Company
 }
