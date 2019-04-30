@@ -1,0 +1,110 @@
+<div style="min-height: 100vh;" *ngIf="user">
+    <!-- Title Header Start -->
+    <section class="inner-header-title" style="background-image:url('assets/img/banner-10.jpg');">
+        <div class="container">
+            <h1>Company Detail</h1>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+    <!-- Title Header End -->
+
+    <!-- Company Detail Start -->
+    <section class="detail-desc">
+        <div class="container white-shadow">
+
+            <div class="row">
+                <div class="detail-pic">
+                    <img class="img" [src]="user.logoUrl ? user.logoUrl : 'assets/img/defaultCompany.jpg'">
+                    <a *ngIf="authService.credentials.user._id == userId" (click)="file.click()" class="detail-edit"
+                       title="edit"><i class="fa fa-pencil"></i></a>
+                    <input style="display: none;position: absolute;top: 0;" #file (change)="uploadImage(file)"
+                           type="file" name="upload-pic[]" id="upload-pic"
+                           class="inputfile"/>
+                </div>
+            </div>
+
+            <div class="row bottom-mrg">
+
+                <div class="col-md-8 col-sm-8">
+                    <div class="detail-desc-caption">
+                        <h4>{{user.companyName}}</h4>
+                        <span class="designation">{{user.speciality}}</span>
+                        <p>{{user.about}}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+                    <div class="get-touch">
+                        <h4>Get in Touch</h4>
+                        <ul>
+                            <li *ngIf="user.address"><i class="fa fa-map-marker"></i><span>{{user.address.country}} , {{user.address.fullAddress}}</span>
+                            </li>
+                            <li><i class="fa fa-envelope"></i><span>{{user.email}}</span></li>
+                            <li *ngIf="user.contact"><i class="fa fa-globe"></i><span>{{user.contact.website}}</span>
+                            </li>
+                            <li *ngIf="user.phoneNumbers"><i class="fa fa-phone"></i><span>{{user.phoneNumbers}}</span>
+                            </li>
+                            <li *ngIf="user.employeesNumber"><i
+                                    class="fa fa-users"></i><span>{{user.employeesNumber}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row no-padd">
+                <div class="detail pannel-footer">
+
+                    <div class="col-md-5 col-sm-5">
+                        <ul class="detail-footer-social">
+                            <li *ngIf="user.contact.facebookLink"><a href="{{user.contact.facebookLink}}"><i
+                                    class="fa fa-facebook"></i></a></li>
+                            <li *ngIf="user.contact.linkedInLink"><a href="{{user.contact.linkedInLink}}"><i
+                                    class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7">
+                        <div class="detail-pannel-footer-btn pull-right"
+                             *ngIf="authService.credentials.user._id == userId">
+                            <a routerLink="/company/edit" class="footer-btn blu-btn" title="">Edit company</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Company Detail End -->
+
+    <!-- company full detail Start -->
+    <section class="full-detail-description full-detail">
+        <div class="container">
+            <div class="row row-bottom">
+                <h2 class="detail-title">About {{user.companyName}}</h2>
+                <p [innerHtml]="user.description"></p>
+            </div>
+        </div>
+    </section>
+    <!-- company full detail End -->
+
+    <section class="full-detail-description full-detail" *ngIf="listJobs.length > 0">
+        <div class="container">
+            <div class="row row-bottom">
+                <h2 class="detail-title">{{user.companyName}} job offers</h2>
+                <div class="row">
+                    <div class="grid-slide-2">
+                        <owl-carousel [options]="{items: 3, dots: false, navigation: false}"
+                                      [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                            <app-job-grid-item *ngFor="let item of listJobs" [job]="item"></app-job-grid-item>
+                        </owl-carousel>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+			

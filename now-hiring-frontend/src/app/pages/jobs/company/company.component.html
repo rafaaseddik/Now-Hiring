@@ -1,0 +1,15 @@
+<section class="inner-header-title" style="background-image:url(assets/img/banner-10.jpg);">
+    <div class="container">
+        <h1>Your Jobs</h1>
+    </div>
+</section>
+<div class="clearfix"></div>
+<section class="brows-job-category">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4" *ngFor="let item of listJobs">
+                <app-job-grid-item [job]="item"></app-job-grid-item>
+            </div>
+        </div>
+    </div>
+</section>

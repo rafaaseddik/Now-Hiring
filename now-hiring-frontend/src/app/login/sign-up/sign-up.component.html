@@ -1,0 +1,42 @@
+<div class="h-100">
+  <div class="simple-bg-screen">
+
+  </div>
+</div>
+
+<section class="login-screen-sec">
+  <div class="container">
+    <div class="login-screen">
+      <img src="assets/img/logo.png" class="img-responsive" alt="">
+      <div class="flexbox" *ngIf="type == 0">
+        <button class="btn btn-login" (click)="type=1" type="submit">Candidate</button>
+        <button class="btn btn-login" (click)="type=2" type="submit">Company</button>
+      </div>
+      <form *ngIf="type != 0" [formGroup]="type == 1 ? createCandidateFormGroup : createCompanyFormGroup">
+        <div *ngIf="type == 2">
+          <input type="text" class="form-control" formControlName="companyName" placeholder="Company name">
+          <input type="number" class="form-control" formControlName="employeesNumber" placeholder="Employees number">
+          <input type="text" class="form-control" formControlName="ceoName" placeholder="CEO name">
+        </div>
+        <div *ngIf="type == 1">
+          <input type="text" class="form-control" formControlName="fname" placeholder="First name">
+          <input type="text" class="form-control" formControlName="lname" placeholder="Last name">
+          <input type="date" class="form-control" formControlName="birthdate" placeholder="Birthdate">
+          <input type="tel" class="form-control" formControlName="phoneNumber" placeholder="Phone number">
+        </div>
+        <input type="text" class="form-control" formControlName="email" placeholder="Mail">
+        <input type="password" name="current-password" id="current-password" class="form-control" formControlName="password" placeholder="Password">
+        <button class="btn btn-login" type="button" (click)="signUp()">Sign up</button>
+      </form>
+      <span>You Have an Account? <a routerLink="/login/sign-in"> Sign in</a></span>
+    </div>
+  </div>
+</section>
+<swal
+        #errorSwal
+        title="OPS !"
+        text="Wrong informations"
+        type="error"
+        [showCancelButton]="true"
+        [focusCancel]="true">
+</swal>

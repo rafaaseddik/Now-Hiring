@@ -1,0 +1,90 @@
+<!-- Header Title Start -->
+<section class="inner-header-title blank">
+    <div class="container">
+        <h1>Create Job</h1>
+    </div>
+</section>
+<div class="clearfix"></div>
+<!-- Header Title End -->
+
+<!-- General Detail Start -->
+<div class="detail-desc section">
+    <div class="container white-shadow">
+
+        <div class="row bottom-mrg" style="margin-top: 20px">
+            <div class="add-feild">
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Job Title" [(ngModel)]="job.title">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <select class="form-control input-lg" [(ngModel)]="job.timePlan">
+                            <option value="FULL_TIME" selected>Full time</option>
+                            <option value="PART_TIME">Part time</option>
+                            <option value="INTERNSHIP">Internship</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Min salary" [(ngModel)]="job.minSalary">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Max salary" [(ngModel)]="job.maxSalary">
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12">
+                    <textarea class="form-control" placeholder="Job Description"
+                              [(ngModel)]="job.description"></textarea>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- General Detail End -->
+
+<!-- Basic Full Detail Form Start -->
+<section class="full-detail">
+    <div class="container">
+        <div class="row bottom-mrg extra-mrg">
+            <div>
+                <h2 class="detail-title">Job Requirement</h2>
+                <div class="extra-field-box">
+                    <div class="multi-box" *ngFor="let item of job.skills;let i = index">
+                        <div class="dublicat-box">
+
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Skills, e.g. Css, Html..."
+                                       [(ngModel)]="item.name">
+                            </div>
+
+                            <div class="col-xs-6">
+                                <bar-rating [(ngModel)]="item.level" [max]="5" [theme]="'stars'"></bar-rating>
+                            </div>
+                            <div class="col-xs-6">
+                                <button type="button" (click)="removeSkill(i)" class="btn remove-field mt-0">Remove
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <button (click)="addSkill()" type="button" class="add-field">Add field</button>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <button (click)="submit()" class="btn btn-success btn-primary small-btn">Add job</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Basic Full Detail Form End -->

@@ -1,0 +1,28 @@
+<div class="h-100">
+  <div class="simple-bg-screen">
+
+  </div>
+</div>
+
+<section class="login-screen-sec">
+    <div class="container">
+      <div class="login-screen">
+        <a><img src="assets/img/logo.png" class="img-responsive" alt=""></a>
+        <form [formGroup]="loginForm">
+          <input type="text" class="form-control" formControlName="email" placeholder="Mail">
+          <input type="password" name="current-password" id="current-password" class="form-control" formControlName="password" placeholder="Password">
+          <button class="btn btn-login" type="button" (click)="signIn()">Login</button>
+          <span>You Have No Account? <a routerLink="/login/sign-up"> Create An Account</a></span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<swal
+        #errorSwall
+        title="OPS !"
+        text="Wrong mail or password"
+        type="error"
+        [showCancelButton]="true"
+        [focusCancel]="true">
+</swal>

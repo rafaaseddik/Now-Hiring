@@ -1,0 +1,67 @@
+<!-- Title Header Start -->
+<section class="inner-header-title" style="background-image:url(assets/img/banner-10.jpg);">
+    <div class="container">
+        <h1>Browse Company</h1>
+    </div>
+</section>
+<div class="clearfix"></div>
+<!-- Title Header End -->
+
+
+<!-- Browse Company List Start -->
+<section class="browse-company">
+    <div class="container">
+
+        <!-- Company Searrch Filter Start -->
+        <div class="row extra-mrg">
+            <div class="wrap-search-filter">
+                <form [formGroup]="filterForm">
+                    <div class="col-md-4 col-sm-4">
+                        <input formControlName="keyword" type="text" class="form-control"
+                               placeholder="Keyword: Name, Tag">
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <input formControlName="address" type="text" class="form-control"
+                               placeholder="Location: City, State, Zip">
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <input formControlName="speciality" type="text" class="form-control"
+                               placeholder="Speciality: Computer">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="item-click" *ngFor="let item of displayList" [routerLink]="['/company',item._id]">
+            <article>
+                <div class="brows-company">
+                    <div class="col-md-2 col-sm-2">
+                        <div class="brows-company-pic">
+                            <img class="img-responsive"
+                                 [src]="item.logoUrl ? item.logoUrl : 'assets/img/defaultCompany.jpg'">
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="brows-company-name">
+                            <a><h4>{{item.companyName}}</h4></a>
+                            <span class="brows-company-tagline">{{item.speciality}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="brows-company-location">
+                            <p *ngIf="item.address"><i class="fa fa-map-marker"></i> {{item.address.fullAddress}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <div class="brows-company-position">
+                            <p>{{item.offersNumber}} available offers</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+</section>
+<!-- Browse Company List End -->

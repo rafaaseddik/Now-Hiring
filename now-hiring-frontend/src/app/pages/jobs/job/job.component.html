@@ -1,0 +1,227 @@
+<div *ngIf="job">
+  <!-- Title Header Start -->
+  <section class="inner-header-page">
+    <div class="container">
+
+      <div class="col-md-8">
+        <div class="left-side-container">
+          <div class="freelance-image"><a [routerLink]="['/company',job.company._id]"><img
+                  [src]="job.company.logoUrl ? job.company.logoUrl : 'assets/img/defaultCompany.jpg'"
+                  class="img-responsive" alt=""></a></div>
+          <div class="header-details">
+            <h4>{{job.title}}</h4>
+            <p>{{job.company.companyName}}</p>
+            <ul *ngIf="job.company.address">
+              <li>{{job.company.address.fullAddress}}</li>
+              <li>
+                <div class="verified-action">Verified</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 bl-1 br-gary">
+        <div class="right-side-detail">
+          <ul>
+            <li><span class="detail-info">Availability</span>{{timePlan}}</li>
+            <li><span class="detail-info">Employees Number</span>{{job.company.employeesNumber}}</li>
+            <li><span class="detail-info">Contact</span>{{job.company.email}}</li>
+          </ul>
+          <ul class="social-info">
+            <li *ngIf="job.company.contact.facebookLink"><a href="{{job.company.contact.facebookLink}}"><i
+                    class="fa fa-facebook"></i></a></li>
+            <li *ngIf="job.company.contact.linkedInLink"><a href="{{job.company.contact.linkedInLink}}"><i
+                    class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <div class="clearfix"></div>
+  <!-- Title Header End -->
+
+  <!-- Job Detail Start -->
+  <section>
+    <div class="container">
+
+
+      <div class="col-md-8 col-sm-8">
+        <router-outlet></router-outlet>
+        <!-- Similar Jobs -->
+        <div *ngIf="0" class="container-detail-box">
+
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Similar Jobs</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="grid-slide-2">
+
+              <!-- Single Freelancer & Premium job -->
+              <div class="freelance-box">
+                <div class="popular-jobs-container">
+                  <div class="popular-jobs-box">
+                    <span class="popular-jobs-status bg-success">hourly</span>
+                    <h4 class="flc-rate">$17/hr</h4>
+                    <div class="popular-jobs-box">
+                      <div class="popular-jobs-box-detail">
+                        <h4>Google Inc</h4>
+                        <span class="desination">Software Designer</span>
+                      </div>
+                    </div>
+                    <div class="popular-jobs-box-extra">
+                      <ul>
+                        <li>Php</li>
+                        <li>Android</li>
+                        <li>Html</li>
+                        <li class="more-skill bg-primary">+3</li>
+                      </ul>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui.</p>
+                    </div>
+                  </div>
+                  <a href="http://themezhub.com/" class="btn btn-popular-jobs bt-1">View Detail</a>
+                </div>
+              </div>
+
+              <!-- Single Freelancer & Premium job -->
+              <div class="freelance-box">
+                <div class="popular-jobs-container">
+                  <div class="popular-jobs-box">
+                    <span class="popular-jobs-status bg-warning">Monthly</span>
+                    <h4 class="flc-rate">$570/Mo</h4>
+                    <div class="popular-jobs-box">
+                      <div class="popular-jobs-box-detail">
+                        <h4>Duff Beer</h4>
+                        <span class="desination">Marketting</span>
+                      </div>
+                    </div>
+                    <div class="popular-jobs-box-extra">
+                      <ul>
+                        <li>Php</li>
+                        <li>Android</li>
+                        <li>Html</li>
+                        <li class="more-skill bg-primary">+3</li>
+                      </ul>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui.</p>
+                    </div>
+                  </div>
+                  <a href="http://themezhub.com/" class="btn btn-popular-jobs bt-1">View Detail</a>
+                </div>
+              </div>
+
+              <!-- Single Freelancer & Premium job -->
+              <div class="freelance-box">
+                <div class="popular-jobs-container">
+                  <div class="popular-jobs-box">
+                    <span class="popular-jobs-status bg-info">Weekly</span>
+                    <h4 class="flc-rate">$200/We</h4>
+                    <div class="popular-jobs-box">
+                      <div class="popular-jobs-box-detail">
+                        <h4>Cyberdyne Systems</h4>
+                        <span class="desination">Human Resource</span>
+                      </div>
+                    </div>
+                    <div class="popular-jobs-box-extra">
+                      <ul>
+                        <li>Php</li>
+                        <li>Android</li>
+                        <li>Html</li>
+                        <li class="more-skill bg-primary">+3</li>
+                      </ul>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui.</p>
+                    </div>
+                  </div>
+                  <a href="http://themezhub.com/" class="btn btn-popular-jobs bt-1">View Detail</a>
+                </div>
+              </div>
+
+              <!-- Single Freelancer & Premium job -->
+              <div class="freelance-box">
+                <div class="popular-jobs-container">
+                  <div class="popular-jobs-box">
+                    <span class="popular-jobs-status bg-danger">Yearly</span>
+                    <h4 class="flc-rate">$2000/Pa</h4>
+                    <div class="popular-jobs-box">
+                      <div class="popular-jobs-box-detail">
+                        <h4>Wayne Enterprises</h4>
+                        <span class="desination">App Designer</span>
+                      </div>
+                    </div>
+                    <div class="popular-jobs-box-extra">
+                      <ul>
+                        <li>Php</li>
+                        <li>Android</li>
+                        <li>Html</li>
+                        <li class="more-skill bg-primary">+3</li>
+                      </ul>
+                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui.</p>
+                    </div>
+                  </div>
+                  <a href="http://themezhub.com/" class="btn btn-popular-jobs bt-1">View Detail</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sidebar Start-->
+      <div class="col-md-4 col-sm-4">
+
+        <!-- Job Detail -->
+        <div class="sidebar-container">
+          <div class="sidebar-box">
+            <span class="sidebar-status">{{timePlan}}</span>
+            <h4 class="flc-rate">{{job.minSalary/1000}}K - {{job.maxSalary/1000}}K</h4>
+            <div class="sidebar-inner-box">
+              <div class="sidebar-box-thumb">
+                <img [src]="job.company.logoUrl ? job.company.logoUrl : 'assets/img/defaultCompany.jpg'"
+                     class="img-responsive" alt=""/>
+              </div>
+              <div class="sidebar-box-detail">
+                <h4>{{job.company.companyName}}</h4>
+                <span class="desination">{{job.title}}</span>
+              </div>
+            </div>
+            <div class="sidebar-box-extra">
+              <ul>
+                <li *ngFor="let item of job.skills.slice(0, 3)">{{item.name}}</li>
+                <li *ngIf="job.skills.length > 3" class="more-skill bg-primary">
+                  +{{job.skills.length-3}}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a *ngIf="authService.credentials.userType != 'COMPANY'" [routerLink]="['/jobs',job._id,'apply']"
+             class="btn btn-sidebar bt-1 bg-success">Apply For This</a>
+        </div>
+
+        <!-- Share This Job -->
+        <div class="sidebar-wrapper">
+          <div class="sidebar-box-header bb-1">
+            <h4>Share This Job</h4>
+          </div>
+
+          <ul class="social-share">
+            <li><a href="#" class="fb-share"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#" class="tw-share"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#" class="gp-share"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#" class="in-share"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#" class="li-share"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#" class="be-share"><i class="fa fa-behance"></i></a></li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- End Sidebar -->
+
+    </div>
+  </section>
+  <!-- Job Detail End -->
+</div>

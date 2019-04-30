@@ -1,0 +1,283 @@
+<!-- Header Title Start -->
+<section class="inner-header-title blank">
+    <div class="container">
+        <h1>{{hasResume ? 'Edit' : 'Create'}} Resume</h1>
+    </div>
+</section>
+<div class="clearfix"></div>
+<!-- Header Title End -->
+<div>
+    <!-- General Detail Start -->
+    <div class="section detail-desc">
+        <div class="container white-shadow">
+
+            <div class="row">
+                <div class="detail-pic js">
+                    <div class="box">
+                        <input #file (change)="uploadCV(file)" type="file" name="upload-pic[]" id="upload-pic"
+                               class="inputfile"/>
+                        <label for="upload-pic"><i class="fa fa-upload" aria-hidden="true"></i><span></span></label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row bottom-mrg">
+                <div class="add-feild">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Your First Name" [(ngModel)]="user.fname">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Your Last Name" [(ngModel)]="user.lname">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email" [(ngModel)]="user.email">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Professional Title" [(ngModel)]="user.resume.professionalTitle">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- General Detail End -->
+
+    <!-- full detail SetionStart-->
+    <section class="full-detail">
+        <div class="container">
+            <div class="row bottom-mrg extra-mrg">
+
+                <h2 class="detail-title">General Information</h2>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input type="text" class="form-control" placeholder="Email Address" [(ngModel)]="user.email">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                        <input type="text" class="form-control" placeholder="Phone Number" [(ngModel)]="user.phoneNumber">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                        <input type="text" class="form-control" placeholder="Website Address" [(ngModel)]="user.contact.website">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                        <input type="text" class="form-control" placeholder="Country" [(ngModel)]="user.address.country">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                        <input type="text" class="form-control" placeholder="City" [(ngModel)]="user.address.city">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                        <input type="text" class="form-control" placeholder="Full Address" [(ngModel)]="user.address.fullAddress">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
+                        <input type="date" class="form-control" id="dob"[(ngModel)]="user.birthdate" >
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row bottom-mrg extra-mrg">
+
+                <h2 class="detail-title">Social Profile</h2>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+                        <input type="text" class="form-control" placeholder="Profile Link" [(ngModel)]="user.contact.facebookLink">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-github"></i></span>
+                        <input type="text" class="form-control" placeholder="Profile Link" [(ngModel)]="user.contact.githubLink">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-stack-overflow"></i></span>
+                        <input type="text" class="form-control" placeholder="Profile Link" [(ngModel)]="user.contact.stackoverflowLink">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
+                        <input type="text" class="form-control" placeholder="Profile Link" [(ngModel)]="user.contact.linkedInLink">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
+                        <input type="text" class="form-control" placeholder="Profile Link" [(ngModel)]="user.contact.website">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row bottom-mrg extra-mrg">
+
+                <h2 class="detail-title">Add Education</h2>
+                <div class="extra-field-box">
+                    <div class="multi-box row" *ngFor="let item of user.resume.education_experience; let i = index">
+                        <div class="dublicat-box">
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" class="form-control"
+                                       placeholder="School Name, e.g. Master Of Technology" [(ngModel)]="item.schoolName">
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" class="form-control"
+                                       placeholder="Qualification, e.g. Master Of Arts" [(ngModel)]="item.description">
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Country</span>
+                                    <input type="text" class="form-control" [(ngModel)]="item.address.country">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">City</span>
+                                    <input type="text" class="form-control" [(ngModel)]="item.address.city">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Date From</span>
+                                    <input type="date" class="form-control" [(ngModel)]="item.startDate">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Date To</span>
+                                    <input type="date" class="form-control" [(ngModel)]="item.endDate">
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn remove-field" (click)="removeEduExp(i)">Remove</button>
+                        </div>
+                    </div>
+                    <button (click)="addEduExp()" type="button" class="add-field">Add field</button>
+                </div>
+
+            </div>
+
+            <div class="row bottom-mrg extra-mrg">
+
+                <h2 class="detail-title">Add Experience</h2>
+                <div class="extra-field-box">
+                    <div class="multi-box">
+                        <div class="dublicat-box row" *ngFor="let item of user.resume.work_experience; let i = index">
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Company" [(ngModel)]="item.companyName">
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Position, e.g. Web Designer" [(ngModel)]="item.position">
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Country</span>
+                                    <input type="text" class="form-control" [(ngModel)]="item.address.country">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">City</span>
+                                    <input type="text" class="form-control" [(ngModel)]="item.address.city">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Date From</span>
+                                    <input type="date" class="form-control" [(ngModel)]="item.startDate">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Date To</span>
+                                    <input type="date" class="form-control" [(ngModel)]="item.endDate">
+                                </div>
+                            </div>
+
+                            <button type="button" (click)="removeWorkExp(i)" class="btn remove-field">Remove</button>
+                        </div>
+                    </div>
+                    <button (click)="addWorkExp()" type="button" class="add-field">Add field</button>
+                </div>
+
+            </div>
+
+            <div class="row bottom-mrg extra-mrg">
+
+                <h2 class="detail-title">Add Skills</h2>
+
+
+
+            </div>
+            <div class="row bottom-mrg extra-mrg">
+
+                <div class="col-md-12">
+                    <button (click)="submit()" class="btn btn-success btn-primary small-btn">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- full detail SetionStart-->
+
+</div>

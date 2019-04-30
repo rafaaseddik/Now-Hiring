@@ -1,0 +1,120 @@
+<div *ngIf="user">
+    <section class="inner-header-title" style="background-image:url(assets/img/banner-10.jpg);">
+        <div class="container">
+            <h1>Candidate Detail</h1>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+    <!-- Title Header End -->
+
+    <!-- Resume Detail Start -->
+    <section class="detail-desc">
+        <div class="container white-shadow">
+            <div class="row mrg-0">
+                <div class="detail-pic">
+                    <img class="img" [src]="user.imageUrl ? user.imageUrl : 'assets/img/user-default.jpg'"/>
+                    <a *ngIf="authService.credentials.user._id == userId" (click)="file.click()" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a>
+                    <input style="display: none;position: absolute;top: 0;" #file (change)="uploadImage(file)" type="file" name="upload-pic[]" id="upload-pic"
+                           class="inputfile"/>
+                </div>
+            </div>
+            <div class="row bottom-mrg mrg-0">
+                <div class="col-md-8 col-sm-8">
+                    <div class="detail-desc-caption">
+                        <h4>{{user.fname}} {{user.lname}}</h4>
+                        <span *ngIf="user.resume" class="designation">{{user.resume.professionalTitle}}</span>
+                    </div>
+                    <div class="detail-desc-skill" *ngIf="user.resume">
+                        <span *ngFor="let skill of user.resume.skills">{{skill.name}}</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="get-touch">
+                        <h4>Get in Touch</h4>
+                        <ul>
+                            <ul>
+                                <li *ngIf="user.address.country"><i class="fa fa-map-marker"></i><span>{{user.address.country}} , {{user.address.fullAddress}}</span>
+                                </li>
+                                <li><i class="fa fa-envelope"></i><span>{{user.email}}</span></li>
+                                <li *ngIf="user.contact.website"><i class="fa fa-globe"></i><span>{{user.contact.website}}</span>
+                                </li>
+                                <li *ngIf="user.phoneNumbers"><i
+                                        class="fa fa-phone"></i><span>{{user.phoneNumbers}}</span>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-padd mrg-0">
+                <div class="detail pannel-footer">
+                    <div class="col-md-5 col-sm-5">
+                        <ul class="detail-footer-social">
+                            <li *ngIf="user.contact.facebookLink"><a href="{{user.contact.facebookLink}}"><i
+                                    class="fa fa-facebook"></i></a></li>
+                            <li *ngIf="user.contact.linkedInLink"><a href="{{user.contact.linkedInLink}}"><i
+                                    class="fa fa-linkedin"></i></a></li>
+                            <li *ngIf="user.contact.githubLink"><a href="{{user.contact.githubLink}}"><i
+                                    class="fa fa-github"></i></a></li>
+                            <li *ngIf="user.contact.stackoverflowLink"><a href="{{user.contact.stackoverflowLink}}"><i
+                                    class="fa fa-stack-overflow"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7">
+                        <div class="detail-pannel-footer-btn pull-right"
+                             *ngIf="authService.credentials.user._id == userId">
+                            <a routerLink="/user/resume" class="footer-btn blu-btn" title="">Edit profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Resume Detail End -->
+
+    <section class="full-detail-description full-detail" *ngIf="user.resume">
+        <div class="container">
+            <div class="row row-bottom mrg-0">
+                <h2 class="detail-title">Education</h2>
+                <div *ngFor="let item of user.resume.education_experience" class="experience col-xs-12 col-md-6">
+                    <h3>{{item.schoolName}}</h3>
+                    <h4>{{item.description}}</h4>
+                    <h5>{{item | experienceDate}}</h5>
+                </div>
+            </div>
+            <div class="row row-bottom mrg-0">
+                <h2 class="detail-title">Work Experience</h2>
+                <div *ngFor="let item of user.resume.work_experience" class="experience col-xs-12 col-md-6">
+                    <h3>{{item.companyName}}</h3>
+                    <h4>{{item.position}}</h4>
+                    <h6>{{item.description}}</h6>
+                    <h5>{{item | experienceDate}}</h5>
+                </div>
+            </div>
+            <div class="row row-bottom mrg-0">
+                <h2 class="detail-title">Skills</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua.</p>
+                <div class="ext-mrg row third-progress">
+                    <div *ngFor="let skill of user.resume.skills" class="col-md-6 col-sm-6">
+                        <div class="panel-body">
+                            <h3 class="progressbar-title">{{skill.name}}</h3>
+                            <div class="progress">
+                                <div class="progress-bar"
+                                     [ngStyle]="{'background': backgroundForLevel[skill.level],'width': (skill.level*20)+'%'}">
+                                    <span class="progress-icon fa fa-plus"
+                                          [ngStyle]="{'color': backgroundForLevel[skill.level],'border-color': backgroundForLevel[skill.level]}"></span>
+                                    <div class="progress-value">{{skill.level*20}}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+			

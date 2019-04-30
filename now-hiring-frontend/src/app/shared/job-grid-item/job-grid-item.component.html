@@ -1,0 +1,46 @@
+<div class="freelance-box" style="width: 350px;">
+  <div class="popular-jobs-container">
+    <div *ngIf="0" class="popular-jobs-box">
+      <span class="popular-jobs-status bg-success">hourly</span>
+      <h4 class="flc-rate">$17/hr</h4>
+      <div class="popular-jobs-box">
+        <div class="popular-jobs-box-detail">
+          <h4>Google Inc</h4>
+          <span class="desination">Software Designer</span>
+        </div>
+      </div>
+      <div class="popular-jobs-box-extra">
+        <ul>
+          <li>Php</li>
+          <li>Android</li>
+          <li>Html</li>
+          <li class="more-skill bg-primary">+3</li>
+        </ul>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui.</p>
+      </div>
+    </div>
+    <div class="popular-jobs-box">
+      <span class="sidebar-status">{{timePlan}}</span>
+      <h4 class="flc-rate">{{job.minSalary/1000}}K - {{job.maxSalary/1000}}K</h4>
+      <div class="sidebar-inner-box">
+        <div class="sidebar-box-thumb">
+          <img [src]="job.company.logoUrl ? job.company.logoUrl : 'assets/img/defaultCompany.jpg'"
+               class="img-responsive" alt=""/>
+        </div>
+        <div class="sidebar-box-detail">
+          <h4>{{job.company.companyName}}</h4>
+          <span class="desination">{{job.title}}</span>
+        </div>
+      </div>
+      <div class="sidebar-box-extra">
+        <ul>
+          <li *ngFor="let item of job.skills.slice(0, 3)">{{item.name}}</li>
+          <li *ngIf="job.skills.length > 3" class="more-skill bg-primary">
+            +{{job.skills.length-3}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a [routerLink]="['/jobs',job._id]" class="btn btn-popular-jobs bt-1">View Detail</a>
+  </div>
+</div>

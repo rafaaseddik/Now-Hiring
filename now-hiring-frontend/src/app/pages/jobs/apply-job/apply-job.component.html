@@ -1,0 +1,85 @@
+<div *ngIf="0" class="container-detail-box">
+
+    <div class="apply-job-header">
+        <h4>Front End Developer</h4>
+        <a href="company-detail.html" class="cl-success"><span><i
+                class="fa fa-building"></i>Google</span></a>
+        <span><i class="fa fa-map-marker"></i>United Kingdom</span>
+    </div>
+
+    <div class="apply-job-detail">
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
+            dolorum fuga.</p>
+        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+            est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+    </div>
+
+    <div class="apply-job-detail">
+        <h5>Skills</h5>
+        <ul class="skills">
+            <li>Css3</li>
+            <li>Html5</li>
+            <li>Photoshop</li>
+            <li>Wordpress</li>
+            <li>PHP</li>
+            <li>Java Script</li>
+        </ul>
+    </div>
+
+    <div class="apply-job-detail">
+        <h5>Requirements</h5>
+        <ul class="job-requirements">
+            <li><span>Availability</span> Hourly</li>
+            <li><span>Education</span> Graduate</li>
+            <li><span>Age</span> 25+</li>
+            <li><span>Experience</span> Intermidiate (3 - 5Year)</li>
+            <li><span>Language</span> English, Hindi</li>
+        </ul>
+    </div>
+
+    <a href="#" class="btn btn-success">Apply For This Job</a>
+
+</div>
+
+<div class="container-detail-box">
+
+    <div class="apply-job-header">
+        <h4>Knowledge tests</h4>
+    </div>
+
+    <div class="apply-job-detail">
+        <div class="row" *ngFor="let item of knowledgeTests;let i =index">
+            <div class="col-xs-8">
+                <h5>{{item.title}}</h5>
+                <h6>{{item.questions.length}} Questions</h6>
+                <p *ngIf="item.submission">Score : {{(item.submission.score*100).toString().substring(0, 5)}} %</p>
+            </div>
+            <div class="col-xs-4 ">
+                <a *ngIf="item.submission" class="btn applied advance-search" style="float: right" title="applied"><i class="fa fa-check" aria-hidden="true"></i>Applied</a>
+                <a *ngIf="!item.submission" [routerLink]="['/jobs',offerId,'apply','qcm',item._id]" style="float: right"class="btn advance-search" title="apply">Apply</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-detail-box">
+
+    <div class="apply-job-header">
+        <h4>Dev tests</h4>
+    </div>
+
+    <div class="apply-job-detail">
+        <div class="row" *ngFor="let item of devTests;let i=index">
+            <div class="col-xs-8">
+                <h5>{{item.title}}</h5>
+                <h6>{{item.testcases.length}} Test cases</h6>
+                <p *ngIf="item.submission">Score : {{(item.submission.score*100).toString().substring(0, 5)}} %</p>
+            </div>
+            <div class="col-xs-4 ">
+                <a *ngIf="item.submission" class="btn applied advance-search" style="float: right" title="applied"><i class="fa fa-check" aria-hidden="true"></i>Applied</a>
+                <a *ngIf="!item.submission" [routerLink]="['/jobs',offerId,'apply','dev',item._id]" style="float: right"class="btn advance-search" title="apply">Apply</a>
+            </div>
+        </div>
+    </div>
+</div>

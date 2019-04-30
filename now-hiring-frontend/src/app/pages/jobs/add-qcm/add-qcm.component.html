@@ -1,0 +1,50 @@
+<div class="container-detail-box">
+  <h4>Test description</h4>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="input-group w-100">
+        <input type="text" class="form-control" placeholder="Title" [(ngModel)]="test.title">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 mrg-top-15">
+      <angular-editor  [config]="editorConfig" [(ngModel)]="test.description"></angular-editor>
+    </div>
+  </div>
+  <h4 class="mrg-top-15">Number of questions</h4>
+  <div class="row">
+    <div class="col-xs-12 ">
+      <div class="input-group w-100">
+        <input min="0" type="number" class="form-control" (change)="numberOfQuestionsChanged()" placeholder="Number of questions" [(ngModel)]="test.numberOfQuestions">
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="container-detail-box" *ngFor="let item of test.questions; let i = index">
+  <h4>Question {{i+1}}/{{test.questions.length}}</h4>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="input-group w-100">
+        <input type="text" class="form-control" placeholder="Statement" [(ngModel)]="test.questions[i].statement">
+      </div>
+    </div>
+  </div>
+  <h6 class="mrg-top-15">Answers</h6>
+  <div class="row" *ngFor="let answer of item.answers; let j = index">
+    <div class="col-xs-12 ">
+      <div class="input-group w-100 answer">
+        <input type="text" class="form-control" placeholder="Answer" [(ngModel)]="answer.content">
+        <img (click)="selectAnswer(answer)" src="assets/img/checked.svg" [ngStyle]="{'opacity': answer.isSelected ? 1 : 0.2}"/>
+      </div>
+      <button type="button" (click)="removeAnswer(i,j)" class="btn remove-field">Remove</button>
+    </div>
+  </div>
+  <button (click)="addAnswer(i)" type="button" class="add-field">Add Answer</button>
+</div>
+<div class="container-detail-box">
+
+  <a (click)="addTest()" class="btn btn-success">Add test</a>
+
+</div>

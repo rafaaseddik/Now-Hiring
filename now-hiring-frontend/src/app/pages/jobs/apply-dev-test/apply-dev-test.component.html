@@ -1,0 +1,40 @@
+<div class="container-detail-box" *ngIf="test">
+
+    <div class="apply-job-header">
+        <h2 class="text-center">{{test.title}}</h2>
+    </div>
+
+    <div class="apply-job-detail problem-statement">
+        <div class="" [innerHtml]="test.description"></div>
+    </div>
+</div>
+
+<div class="container-detail-box" style="padding: 0">
+    <div id="editor" style="height: 50vh">
+    </div>
+</div>
+
+<div class="container-detail-box">
+    <div class="apply-job-detail problem-statement">
+        <div class="row" style="display: flex">
+            <button (click)="run()" class="btn btn-success btn-primary small-btn">Run test</button>
+            <button (click)="submit()" class="btn btn-success btn-primary small-btn">Submit</button>
+        </div>
+    </div>
+</div>
+
+<div class="container-detail-box" *ngIf="syntaxError != null || testcasesResult.length > 0">
+    <div class="apply-job-header">
+        <h4>Result</h4>
+    </div>
+
+    <div class="apply-job-detail problem-statement">
+        <p class="error" *ngIf="syntaxError">Error : syntaxError</p>
+        <div *ngIf="!syntaxError && testcasesResult">
+            <p *ngFor="let item of testcasesResult; let i = index">Test case {{i+1}} : <b
+                    [ngClass]="{'valid':item.success,'error':!item.success}">{{item.success ? 'valid' : 'failed'}}</b>
+            </p>
+            <h5>Total score : <b>{{score*100}} %</b></h5>
+        </div>
+    </div>
+</div>
